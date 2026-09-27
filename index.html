@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#9f2f23">
+  <title>Tiệm Mỳ Cay Mê Ly</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="game-shell" id="gameShell">
+    <header class="topbar" aria-label="Thông tin cửa hàng">
+      <button class="icon-btn" id="settingsBtn" type="button" aria-label="Cài đặt">⚙️</button>
+      <div class="day-block"><strong>Ngày <span id="dayLabel">1</span></strong><span id="phaseLabel">Chuẩn bị</span></div>
+      <div class="shop-heading"><button id="renameBtn" type="button" title="Đổi tên quán"><span id="shopName">Tiệm Mỳ Cay Mê Ly</span> ✎</button><strong id="moneyLabel">400k</strong></div>
+      <div class="rating-block"><span id="starsLabel" aria-label="Bốn sao">★★★★☆</span><small><span id="ratingLabel">4,0</span> · <span id="reviewLabel">0</span> đánh giá</small></div>
+    </header>
+
+    <section class="screen prep-screen" id="prepScreen" aria-labelledby="menuTitle">
+      <div class="awning" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <section class="menu-board">
+        <div class="steam-bowl" aria-hidden="true"><i></i><i></i><i></i><b>🍜</b></div>
+        <p class="eyebrow">Bếp đỏ hôm nay</p>
+        <h1 id="menuTitle">Menu mỳ cay</h1>
+        <div class="menu-grid" id="menuGrid"></div>
+      </section>
+
+      <nav class="tabs" aria-label="Quản lý quán" role="tablist">
+        <button class="tab active" type="button" role="tab" aria-selected="true" data-tab="stock">📦<span>Kho</span></button>
+        <button class="tab" type="button" role="tab" aria-selected="false" data-tab="upgrades">🛠️<span>Nâng cấp</span></button>
+        <button class="tab" type="button" role="tab" aria-selected="false" data-tab="recipes">📖<span>Công thức</span></button>
+        <button class="tab" type="button" role="tab" aria-selected="false" data-tab="journal">📊<span>Nhật ký</span></button>
+      </nav>
+
+      <section class="tab-panel" id="panel" role="tabpanel"></section>
+
+      <div class="prep-actions">
+        <div class="cart-total"><span>Giỏ nhập hôm nay</span><strong id="cartTotal">0k</strong></div>
+        <button class="secondary-action" id="buyBtn" type="button" disabled>Nhập nguyên liệu</button>
+        <button class="primary-action" id="openBtn" type="button">🔥 Mở cửa ngày <span id="openDay">1</span></button>
+      </div>
+    </section>
+
+    <section class="screen service-screen hidden" id="serviceScreen" aria-label="Phục vụ khách">
+      <div class="service-progress" id="serviceProgress" aria-label="Tiến độ ca bán"></div>
+      <section class="customer-zone">
+        <div class="customer-avatar" id="customerAvatar" aria-hidden="true">👩🏻</div>
+        <div class="speech">
+          <p class="customer-name" id="customerName">Khách hàng</p>
+          <p id="orderText">Cho mình một tô mỳ cay nhé!</p>
+          <div class="order-chips" id="orderChips"></div>
+          <div class="patience"><span id="patienceBar"></span></div>
+          <small id="patienceText">Khách đang vui vẻ chờ món</small>
+        </div>
+      </section>
+
+      <section class="kitchen">
+        <div class="kitchen-sign"><span>QUẦY BẾP</span><b id="comboLabel">Combo ×1</b></div>
+        <div class="cooktop">
+          <div class="bowl-stage" id="bowlStage">
+            <div class="empty-tray" id="emptyTray"><strong>Lấy tô</strong><span>rồi làm theo đơn</span></div>
+            <div class="noodle-bowl hidden" id="noodleBowl" aria-label="Tô mỳ đang làm">
+              <div class="bowl-steam"><i></i><i></i><i></i></div>
+              <div class="bowl-content" id="bowlContent"></div>
+              <div class="bowl-rim"></div>
+              <div class="bowl-base"></div>
+              <span class="spice-badge" id="spiceBadge">0🌶️</span>
+            </div>
+          </div>
+          <div class="serve-tools">
+            <button id="serveBtn" type="button">🔔 Giao món</button>
+            <button id="discardBtn" type="button">🗑️ Làm lại</button>
+          </div>
+        </div>
+        <div class="ingredient-grid" id="ingredientGrid"></div>
+      </section>
+      <div class="service-hint" id="serviceHint">Đọc đơn → lấy tô → cho đủ nguyên liệu → giao món</div>
+    </section>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <section class="overlay splash" id="splash">
+      <div class="splash-sky"><span class="cloud one"></span><span class="cloud two"></span></div>
+      <div class="shop-art" aria-hidden="true">
+        <div class="shop-roof"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="shop-sign">TIỆM MỲ CAY</div>
+        <div class="shop-window"><span>🌶️</span><b>🍜</b><span>🥬</span></div>
+        <div class="counter-cat">🐈</div>
+        <div class="plant left">🪴</div><div class="plant right">🌿</div>
+      </div>
+      <div class="splash-copy">
+        <p class="spicy-mark">🌶️ Ấm bụng · ấm lòng</p>
+        <h1>Tiệm Mỳ Cay<br><em>Mê Ly</em></h1>
+        <p>Nấu mỳ, chiều khách, gây dựng quán nhỏ của riêng bạn</p>
+      </div>
+      <button class="splash-start" id="startBtn" type="button">Vào bếp</button>
+      <button class="text-btn hidden" id="newGameBtn" type="button">Chơi mới từ đầu</button>
+      <small class="version">Bản 1.0 · Lưu tự động</small>
+    </section>
+
+    <section class="overlay modal-overlay hidden" id="modalOverlay" aria-modal="true" role="dialog">
+      <div class="modal-card" id="modalCard"></div>
+    </section>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
+
